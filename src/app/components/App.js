@@ -6,9 +6,6 @@ import { Button } from 'react-bootstrap';
 import SpotifyWebApi from 'spotify-web-api-js';
 import Timer from './timer';
 import ListItem from './ListItem';
-var client_id = '9d2b0b01004541db9ea037efe0ce76d9'; // Your client id
-var client_secret = '331cfe3690b64033b376843ce22d6893'; // Your secret
-var redirect_uri = 'http://localhost:3000/'; // Your redirect uri
 
 var s = new SpotifyWebApi();
 s.setPromiseImplementation(Q);
