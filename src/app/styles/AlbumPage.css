@@ -1,0 +1,44 @@
+.App {
+  text-align: center;
+}
+
+.page {
+    flex-direction: column;
+    height: 100%;
+    background-color: blue;
+}
+
+.header {
+    flex: 1;
+    background-color: red;
+}
+.headerItem {
+    width: fit-content;
+}
+.header-text {
+    font-size: 50px;
+}
+
+.test {
+    flex-direction: row;
+}
+
+.body {
+    height: 200px;
+    background-color: deeppink;
+}
+
+.headerPadding {
+    padding: 50pt;
+}
+
+.tracklistCard {
+    height: 200pt;
+    width: 200pt;
+    overflow-y: scroll;
+}
+
+
+.navbar .navbar-default .navbar-fixed-top {
+    color: deeppink;
+}

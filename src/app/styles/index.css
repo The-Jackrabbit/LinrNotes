@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+button {
+  height: inherit;
+}
+
+searchfield {
+  height: inherit;
+}
+
+albumArt {
+  height: 20px;
+  width: 20px;
+}
+
+headerText {
+    color: "#00ff00"
+}

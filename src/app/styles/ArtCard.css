@@ -1,0 +1,10 @@
+.artCard {
+    height: 175pt;
+    width: 200pt;
+}
+.albumArt {
+    width: 150pt;
+    height: 150pt;
+    margin-right: 25pt;
+    margin-left:25pt;
+}

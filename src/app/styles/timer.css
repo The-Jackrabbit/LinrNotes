@@ -1,0 +1,16 @@
+.timer {
+    margin:25pt;
+    width: fit-content;
+    background-color: hotpink;
+}
+
+.headerEntry {
+    height: 20pt;
+    margin: 2pt;
+    justify-content: center;
+}
+
+.time {
+    font-size: 20pt;
+    font-size-adjust: inherit;
+}
