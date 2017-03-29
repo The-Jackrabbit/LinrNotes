@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import Q from 'q';
 import '../styles/AlbumPage.css';
-//import { HashRouter as Router, Route, Link} from 'react-router-dom';
-import { Grid,  nav, Col, Row } from 'react-bootstrap';
+import { withRouter} from 'react-router-dom';
+import { Grid, Col, Row } from 'react-bootstrap';
 import SpotifyWebApi from 'spotify-web-api-js';
-import Timer from './timer'
 //import request from 'request';
 import { connect,  } from 'react-redux';//dispatch
 
@@ -102,16 +101,6 @@ class AlbumPage extends Component {
     return (
       <div>
         <div className="headerPadding">
-        <nav className="navbar navbar-default navbar-fixed-top">
-          <div className="container-fluid">
-            <div className="navbar-header"> 
-              <p className="navbar-text ">{this.props.albumName}</p>
-            </div>
-            <div className="navbar-header">
-            <Timer className="navbar-text" endTime={this.props.endTime}/>
-            </div>
-            </div>   
-        </nav>
         <Grid>
           <Row className="show-grid">
             <Col sm={3} md={4} lg={4}>          
@@ -220,4 +209,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AlbumPage);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AlbumPage));

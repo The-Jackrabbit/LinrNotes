@@ -1,18 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-//import { HashRouter as Router, Route, Link} from 'react-router-dom';
-//import App from './app/components/App';
-//import Q from 'q';
-//import SpotifyWebApi from 'spotify-web-api-js';
+import { BrowserRouter as Router, Route} from 'react-router-dom';
+import { createBrowserHistory } from "history";
+import App from './app/components/App';
 import { Provider }  from 'react-redux';
-import AlbumPage from './app/components/AlbumPage';
-//import LyricCard from './app/components/LyricCard';
-//13WjgUEEAQp0d9JqojlWp1
+//import AlbumPage from './app/components/AlbumPage';
+//import Header from "./app/components/Header";
 
-//<AlbumPage albumId='13WjgUEEAQp0d9JqojlWp1'/>
-
-//import {createStore} from "redux";
 import  store  from "./app/store";
+
+const history = createBrowserHistory;
 
 store.subscribe(() => {
 })
@@ -22,8 +19,9 @@ console.log("Index.js");
 console.log(store.getState().albumId)
 ReactDOM.render((
   <Provider store={store}>
-    
-    <AlbumPage />
+    <Router history={history}>
+        <Route path="/" component={App} />
+    </Router>
   </Provider>
  ), document.getElementById('root'));
 /* <Router>
