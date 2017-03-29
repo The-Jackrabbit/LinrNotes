@@ -7,17 +7,19 @@ class ArtCard extends Component {
     super(props);
   }
 
+  
   render() {
     return (
         <div className="artCard">
         <img src={this.props.albumArtURL} className="albumArt"/>
-      </div>
+        </div>
     );
   }
 }
 
 const mapStateToProps = (state) => {
   return {
+    data: state.data,
     albumArtURL: state.albumArtURL
   }
 }

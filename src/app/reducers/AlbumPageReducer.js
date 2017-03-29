@@ -1,12 +1,14 @@
 const albumPageReducer = (state = {
     artist: "nullArtist",
     albumName: "nullAlbumName",
-    albumId: "nullAlbumId",
+    albumId: "13WjgUEEAQp0d9JqojlWp1",
     genre: "nullGenre",
     type: "nullType",
     albumArtURL: "nullAlbumArtURL",
     activeSong: "nullActiveSong",
     endTime: "00:00:00",
+    tracklist: "",
+    tracklistArray: [],
     data: {}
 }, action) => {
     if (action.type === 'SETARTIST') {
@@ -55,6 +57,18 @@ const albumPageReducer = (state = {
         state = {
             ...state,
             endTime: action.payload,
+        }
+    }
+    else if (action.type === 'SETTRACKLIST') {
+        state = {
+            ...state,
+            tracklist: action.payload,
+        }
+    }
+    else if (action.type === 'SETTRACKLISTARRAY') {
+        state = {
+            ...state,
+            tracklistArray: action.payload,
         }
     }
     else if (action.type === 'SETDATA') {

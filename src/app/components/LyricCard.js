@@ -14,7 +14,7 @@ class LyricCard extends Component {
         <nav className="navbar navbar-default navbar-fixed">
           <div className="container-fluid">
             <div className="navbar-header"> 
-              <p className='navbar-text'> Now playing... {this.props.songTitle} </p>
+              <p className='navbar-text'> Now playing... {this.props.activeSong} </p>
             </div>
             </div>
         </nav>
@@ -29,7 +29,7 @@ class LyricCard extends Component {
 const mapStateToProps = (state) => {
   return {
     lyrics: 'lala',
-    songTitle: state.name,
+    activeSong: state.activeSong,
   }
 }
 

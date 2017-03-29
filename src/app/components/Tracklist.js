@@ -1,54 +1,87 @@
 import React, { Component } from 'react';
-import Q from 'q';
 import '../styles/AlbumPage.css';
 import { Button, Navbar, Glyphicon, ListGroup, ListGroupItem } from 'react-bootstrap';
-import SpotifyWebApi from 'spotify-web-api-js';
-
-var s = new SpotifyWebApi();
-s.setPromiseImplementation(Q);
+import { connect, dispatch } from 'react-redux';
 
 class Tracklist extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
-        tracks: []
+      array : ''
     }
-    
   }
 
-  componentWillMount() {
-      console.log("track side" + this.props.tracks);
+  componentDidMount() {
+    console.log("TL componentdidmount");
     var temp = [];
-    for (var i = 0 ; i < this.props.tracks.length; i++) {
-        temp.push(
-            <li key={i} className="list-group-item">
-                 {i + 1}) {this.props.tracks[i].name}
-            </li>
-        );
-    }
-    this.setState({
-        trackList: temp
-    });
+        for (var i = 0 ; i < this.props.tracklist.length; i++) {
+            temp.push(
+                <li key={i} className="list-group-item">
+                    {i + 1}) {this.props.tracklist[i].name}
+                </li>
+            );
+        }
+        this.props.setTracklistArray(temp);
+        this.setState({
+          array: temp
+        })
   }
+
+    clickEvent() {
+        
+        console.log(this.props.tracklistArray[0]);
+    }
 
   render() {
-    
+    console.log("TL render");
     return (
         <div className="tracklistCard">
+            <button className="btn btn-default" onClick={this.clickEvent.bind(this)} />
+      
             <div className="panel panel-default">
                 <ul className="list-group">
 
-                    {this.state.trackList}
+                    {this.state.array}
 
                 </ul>
-        </div>
+            </div>
       </div>
     );
   }
 }
 
-Tracklist.propTypes = {
-  tracks: React.PropTypes.array.isRequired
+
+const mapStateToProps = (state) => {
+  return {
+    tracklist: state.tracklist,
+    tracklistArray: state.tracklistArray,
+    activeSong: state.activeSong,
+    data: state.data
+  }
 }
-export default Tracklist;
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setTrackList: (tracklist) => {
+      dispatch({
+        type: "SETTRACKLIST",
+        payload: tracklist
+      })
+    },
+    setTracklistArray: (tracklistArray) => {
+        dispatch({
+            type: "SETTRACKLISTARRAY",
+            payload: tracklistArray
+        })
+    },
+    setActiveSong: (song) => {
+      dispatch({
+        type: 'SETACTIVESONG',
+        payload: song
+      })
+    },
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (Tracklist);

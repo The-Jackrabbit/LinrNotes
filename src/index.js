@@ -17,27 +17,12 @@ import  store  from "./app/store";
 store.subscribe(() => {
 })
 
-store.dispatch({
-  type: "INC",
-  payload: 1
-})
-store.dispatch({
-  type:"SETNAME",
-  payload: "ADHD"
-})
-store.dispatch({
-  type:"SETALBUMID",
-  payload: "13WjgUEEAQp0d9JqojlWp1"
-})
-store.dispatch({
-  type:"SETALBUMARTURL",
-  payload: "https://i.scdn.co/image/dc9bc3b0491e9cd118240529c3822839fdb2e934"
-})
 //"https://i.scdn.co/image/dc9bc3b0491e9cd118240529c3822839fdb2e934"
-const d = store.getState().AlbumPageReducer;
-console.log(d);
+console.log("Index.js");
+console.log(store.getState().albumId)
 ReactDOM.render((
   <Provider store={store}>
+    
     <AlbumPage />
   </Provider>
  ), document.getElementById('root'));
