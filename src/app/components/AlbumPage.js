@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
 import Q from 'q';
 import '../styles/AlbumPage.css';
-import { HashRouter as Router, Route, Link} from 'react-router-dom';
-import { Grid, Button, Navbar, Glyphicon, nav, Col, Row, ColProps, RowProps } from 'react-bootstrap';
+//import { HashRouter as Router, Route, Link} from 'react-router-dom';
+import { Grid,  nav, Col, Row } from 'react-bootstrap';
 import SpotifyWebApi from 'spotify-web-api-js';
 import Timer from './timer'
-import request from 'request';
-import { connect, dispatch } from 'react-redux';
+//import request from 'request';
+import { connect,  } from 'react-redux';//dispatch
 
 import Tracklist from './Tracklist';
 import ArtCard from './ArtCard';
 import LyricCard from './LyricCard';
-
+/*
 var client_id = '9d2b0b01004541db9ea037efe0ce76d9'; // Your client id
 var client_secret = '331cfe3690b64033b376843ce22d6893'; // Your secret
 var redirect_uri = 'http://localhost:3000/'; // Your redirect uri
 
 
-/*
+
 var base_url= "http://api.genius.com";
 var search_url= base_url + "/search";
 var song_title= "Billabong Valley";
@@ -46,9 +46,6 @@ var s = new SpotifyWebApi();
 s.setPromiseImplementation(Q);
 
 class AlbumPage extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   componentWillMount() {
     s.getAlbum(this.props.albumId).then((data) => {
@@ -96,7 +93,7 @@ class AlbumPage extends Component {
       else {
         timeString += time[j];
       }
-      if (j != 2) {timeString += ":";}
+      if (j !== 2) {timeString += ":";}
     }
     return [time, timeString];
   }

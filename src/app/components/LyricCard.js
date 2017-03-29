@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import { Grid, Button, Navbar, Glyphicon, nav, Col, Row, ColProps, RowProps } from 'react-bootstrap';
-import { connect, dispatch } from 'react-redux';
+import { nav } from 'react-bootstrap';
+import { connect } from 'react-redux';//dispatch
 import '../styles/LyricCard.css';
 
 class LyricCard extends Component {
-  constructor(props) {
-    super(props);
-  }
-
+  
   render() {
     return (
       <div>

@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import '../styles/AlbumPage.css';
-import { Button, Navbar, Glyphicon, ListGroup, ListGroupItem } from 'react-bootstrap';
-import { connect, dispatch } from 'react-redux';
+//import { Button, Navbar, Glyphicon, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { connect } from 'react-redux';//dispatch
 
 class Tracklist extends Component {
-  constructor(props) {
-    super(props);
-  }
-
+  
   render() {
     return (
         <div className="tracklistCard">

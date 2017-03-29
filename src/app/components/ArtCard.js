@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
-import { connect, dispatch } from 'react-redux';
+import { connect } from 'react-redux';//dispatch
 import '../styles/ArtCard.css';
 
 class ArtCard extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   
   render() {
     return (
         <div className="artCard">
-        <img src={this.props.albumArtURL} className="albumArt"/>
+        <img src={this.props.albumArtURL} alt="" className="albumArt"/>
         </div>
     );
   }
