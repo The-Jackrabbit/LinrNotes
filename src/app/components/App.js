@@ -9,52 +9,39 @@ import ListItem from './ListItem';
 var client_id = '9d2b0b01004541db9ea037efe0ce76d9'; // Your client id
 var client_secret = '331cfe3690b64033b376843ce22d6893'; // Your secret
 var redirect_uri = 'http://localhost:3000/'; // Your redirect uri
+import { connect } from 'react-redux';//dispatch
 
 var s = new SpotifyWebApi();
 s.setPromiseImplementation(Q);
 
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
-        t: '3yY2gUcIsjMr8hjo51PoJ8',
-        songs: [],
-        value: 'Section 8',
-        albumTime: "00:00:00",
-        albumId: ''
+       songs : []
     }
   }
-  
+
 clickEvent(value) {
     s.getAlbum(value).then((data) => {
-       console.log(data);
-    })
-    this.setState({
-      albumId: value
+       this.props.setAlbumId(data.id);
     });
+    console.log(this.props.albumId);
   }
 
-  sea(event) {
+  search(event) {
     this.setState({
       value: event.target.value
     });
  
     s.searchAlbums(event.target.value).then((data) => {
        console.log(data)
-       var i = data.albums.items.length;
        var temp = [];
-       for (i = 0 ; i < data.albums.items.length; i++) {
-        this.setState({
-          tempValue: data.albums.items[i].id
-        })
-
+       for (var i = 0 ; i < data.albums.items.length; i++) {
         var id = data.albums.items[i].id; 
         temp.push(
-          
-        <Link to={`./albumPage/:id${this.state.albumId}`}> 
-           <div key={i} onClick={() => {this.clickEvent(id)}} value={this.state.tempValue}> 
-             
+           <div key={i} onClick={() => {this.clickEvent(id)}} value={i}> 
              <hr />
              <div className="searchResult">
               <div className="art">
@@ -64,9 +51,7 @@ clickEvent(value) {
                 <p className="info"> {data.albums.items[i].name} </p>
               </div>
              </div>
-            
            </div>
-           </Link>
         )
        }
        this.setState({
@@ -78,17 +63,33 @@ clickEvent(value) {
   render() {
     return (
       <div className="App">
-        
-        <h1> {this.state.albumTime} </h1>
         <div>
-          <input type="text"  id="artistSearch" className='searchField'
-          onChange={this.sea.bind(this)} value={this.state.value} />
-          <Button className='button'>Hi</Button>
+          <input type="text" id="artistSearch" className='searchField'
+          onChange={this.search.bind(this)} />
+          <Button className='button'>Search</Button>
         </div>
-        {this.state.songs}
+        <Link to={"/albumpage"}> {this.state.songs} </Link>
       </div>
     );
   }
 }
 
-export default App;
+
+const mapStateToProps = (state) => {
+  return {
+      albumId: state.albumId
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    //methods go here
+    setAlbumId: (id) => {
+      dispatch({
+        type: "SETALBUMID",
+        payload: id,
+      })
+    }
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(App);
