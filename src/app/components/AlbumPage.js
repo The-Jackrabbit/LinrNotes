@@ -48,34 +48,21 @@ s.setPromiseImplementation(Q);
 class AlbumPage extends Component {
   constructor(props) {
     super(props);
-    console.log("Constructor");
-    
-  }
-
-  componentDidMount() {
-    console.log("Component Did Mount");
-    console.log("processing algo");
-    
-    var temp = [];
-    for (var i = 0 ; i < this.props.tracklist.length; i++) {
-        temp.push(
-            <li key={i} className="list-group-item">
-                 {i + 1}) {this.props.tracklist[i].name}
-            </li>
-        );
-    }
-    console.log("finish algo");
-    this.props.setTracklistArray(temp);
-    this.forceUpdate();
   }
 
   componentWillMount() {
-    console.log("componentWillMount");
-    console.log(this.props.albumId);
     s.getAlbum(this.props.albumId).then((data) => {
-      console.log("collecting data");
       this.props.setData(data);
       this.props.setTrackList(data.tracks.items);
+      var temp = [];
+      for (var i = 0 ; i < this.props.tracklist.length; i++) {
+          temp.push(
+              <li key={i} className="list-group-item">
+                  {i + 1}) {this.props.tracklist[i].name}
+              </li>
+          );
+      }      
+      this.props.setTracklistArray(temp);
       this.props.setAlbumName(data.name);
       this.props.setType(data.genres);
       this.props.setAlbumArtURL(data.images[0].url);
@@ -84,12 +71,6 @@ class AlbumPage extends Component {
       this.props.setEndTime(albumLen[1]);
     })
   }
-
-  clickEvent() {
-    console.log("Click Event");
-  }
-
-  
 
   getAlbumLength(tracklist) {
     var hours = 0; var minutes = 0; var seconds = 0;
@@ -132,11 +113,8 @@ class AlbumPage extends Component {
             <div className="navbar-header">
             <Timer className="navbar-text" endTime={this.props.endTime}/>
             </div>
-            </div>
-          
+            </div>   
         </nav>
-        <button className="btn btn-default" onClick={this.clickEvent.bind(this)} />
-      
         <Grid>
           <Row className="show-grid">
             <Col sm={3} md={4} lg={4}>          
@@ -145,7 +123,6 @@ class AlbumPage extends Component {
             </Col>
             <Col sm={3} md={4} lg={4}>
               <LyricCard />
-              <Button />
               </Col>
             <Col sm={3} md={4} lg={4}>
               <LyricCard />
