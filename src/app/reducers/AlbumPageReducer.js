@@ -1,11 +1,12 @@
 const albumPageReducer = (state = {
     artist: "nullArtist",
     albumName: "nullAlbumName",
-    albumId: "13WjgUEEAQp0d9JqojlWp1",
+    albumId: "5JppODax1KTo8AB7jhtCzk",
     genre: "nullGenre",
     type: "nullType",
     albumArtURL: "nullAlbumArtURL",
     activeSong: "nullActiveSong",
+    currentTime: "00:00:00",
     endTime: "00:00:00",
     tracklist: "",
     tracklistArray: [],
@@ -51,6 +52,12 @@ const albumPageReducer = (state = {
         state = {
             ...state,
             activeSong: action.payload,
+        }
+    }
+    else if (action.type === 'SETCURRENTTIME') {
+        state = {
+            ...state,
+            currentTime: action.payload,
         }
     }
     else if (action.type === 'SETENDTIME') {

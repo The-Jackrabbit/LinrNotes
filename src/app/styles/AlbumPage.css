@@ -28,6 +28,10 @@
     background-color: deeppink;
 }
 
+.btn-toolbar .navbar-fixed-top {
+    min-height: 100pt !important;
+}
+
 .headerPadding {
     padding: 50pt;
 }

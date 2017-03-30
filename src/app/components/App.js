@@ -27,7 +27,7 @@ class App extends Component {
             var id = data.albums.items[i].id; 
             temp.push(
                   <div key={id} value={this.state.tempValue}> 
-                    <Link to={`./albumPage/:id${id}`}>
+                    <Link to={`./:id${id}`} onClick={() => this.props.setAlbumId(id)}>
                     <hr />
                     <div className="searchResult">
                       <div className="art">
@@ -40,6 +40,7 @@ class App extends Component {
                     </Link>
                   </div>
             )
+            
        }
        this.setState({
           albums: temp

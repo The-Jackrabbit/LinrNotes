@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import '../styles/timer.css';
 //import ReactDOM from 'react-dom';
+import { Link, withRouter} from 'react-router-dom';
+import { connect,  } from 'react-redux';
 
 class Timer extends Component {
   constructor (props) {
@@ -27,7 +29,7 @@ class Timer extends Component {
         hours: Math.floor(this.state.count/3600)
     })
     this.buildTimeString();
-    if (this.state.timeString===this.props.endTime) {
+    if (this.props.currentTime===this.props.endTime) {
       this.stopTimer();
     }
   }
@@ -64,6 +66,7 @@ class Timer extends Component {
       this.setState({
           timeString: str
       })
+      this.props.setCurrentTime(this.state.timeString);
   }
 
   render () {
@@ -72,15 +75,31 @@ class Timer extends Component {
         <ul className="nav navbar-nav">
           <li className="headerEntry"><button  type="button" className="btn btn-default" onClick={this.startTimer.bind(this)}><span className="glyphicon glyphicon-play"/></button> </li>
           <li className="headerEntry"><button  type="button" className="btn btn-default" onClick={this.stopTimer.bind(this)}><span className="glyphicon glyphicon-pause"/></button> </li>
-          <li className="headerEntry"><p className="time">{this.state.timeString} / {this.props.endTime}</p></li>
+          <li className="headerEntry"><p className="time">{this.props.currentTime} / {this.props.endTime}</p></li>
        </ul>
       </div>
     )
   }
 }
 
-Timer.propTypes = {
-  endTime : React.PropTypes.string.isRequired
+
+const mapStateToProps = (state) => {
+  return {
+    currentTime: state.currentTime,
+    endTime: state.endTime,
+  }
 }
 
-export default Timer;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    //methods go here
+    setCurrentTime: (time) => {
+      dispatch({
+        type: "SETCURRENTTIME",
+        payload: time,
+      })
+    },
+  }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Timer));
