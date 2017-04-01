@@ -14,7 +14,7 @@ class ListItem extends Component {
         <hr />
         <div className="searchResult">
           <div className="art">
-            <img src={this.props.imageURL} className="albumArt"/>
+            <img alt="" src={this.props.imageURL} className="albumArt"/>
           </div>
           <div >
             <p className="info"> {this.props.albumName} </p>

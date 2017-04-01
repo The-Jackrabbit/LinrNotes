@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Route, Link} from 'react-router-dom';
+import { Link, withRouter} from 'react-router-dom';
 import Q from 'q';
 import '../styles/App.css';
-import { Button } from 'react-bootstrap';
 import SpotifyWebApi from 'spotify-web-api-js';
+<<<<<<< HEAD
 import Timer from './timer';
 import ListItem from './ListItem';
 var client_id = '9d2b0b01004541db9ea037efe0ce76d9'; // Your client id
 var client_secret = '331cfe3690b64033b376843ce22d6893'; // Your secret
 var redirect_uri = 'http://localhost:3000/'; // Your redirect uri
 import { connect } from 'react-redux';//dispatch
+=======
+import { connect,  } from 'react-redux';
+>>>>>>> origin/master
 
 var s = new SpotifyWebApi();
 s.setPromiseImplementation(Q);
@@ -19,6 +22,7 @@ class App extends Component {
     super(props);
 
     this.state = {
+<<<<<<< HEAD
        songs : []
     }
   }
@@ -53,10 +57,40 @@ clickEvent(value) {
              </div>
            </div>
         )
+=======
+      albums: []
+    }
+  }
+
+  search(event) {
+    s.searchAlbums(event.target.value).then((data) => {
+       this.setState({
+         albums: []
+       })
+       var temp = [];
+       for (var i = 0 ; i < data.albums.items.length; i++) {
+            var id = data.albums.items[i].id; 
+            temp.push(
+                  <div key={id} value={this.state.tempValue}> 
+                    <Link to={`./:id${id}`} onClick={() => this.props.setAlbumId(id)}>
+                    <hr />
+                    <div className="searchResult">
+                      <div className="art">
+                        <img alt="" src={data.albums.items[i].images[0].url} className="albumArt"/>
+                      </div>
+                      <div >
+                        <p className="info"> {data.albums.items[i].name} </p>
+                      </div>
+                    </div>
+                    </Link>
+                  </div>
+            )
+            
+>>>>>>> origin/master
        }
        this.setState({
-         songs: temp
-       });
+          albums: temp
+        })
     })
   }
 
@@ -64,11 +98,18 @@ clickEvent(value) {
     return (
       <div className="App">
         <div>
+<<<<<<< HEAD
           <input type="text" id="artistSearch" className='searchField'
           onChange={this.search.bind(this)} />
           <Button className='button'>Search</Button>
         </div>
         <Link to={"/albumpage"}> {this.state.songs} </Link>
+=======
+          <input type="text"  id="artistSearch" className='searchField'
+          onChange={this.search.bind(this)} />
+        </div>
+        {this.state.albums}
+>>>>>>> origin/master
       </div>
     );
   }
@@ -77,7 +118,11 @@ clickEvent(value) {
 
 const mapStateToProps = (state) => {
   return {
+<<<<<<< HEAD
       albumId: state.albumId
+=======
+    albumId: state.albumId,
+>>>>>>> origin/master
   }
 }
 
@@ -89,7 +134,15 @@ const mapDispatchToProps = (dispatch) => {
         type: "SETALBUMID",
         payload: id,
       })
+<<<<<<< HEAD
     }
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+=======
+    },
+  }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
+>>>>>>> origin/master
