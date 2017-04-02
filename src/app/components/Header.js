@@ -30,32 +30,6 @@ class Header extends Component {
       albums: []
     }
   }
-  updateInfo(data) {
-   this.props.setAlbumId(data.albums.items[this.props.albumIndex].id);
-   this.props.setAlbumName(data.albums.items[this.props.albumIndex].name);
-    console.log(this.props.albumIndex);
-    /*
-    s.getAlbum(data.albums.items[0].id).then((data) => {
-      this.props.setData(data);
-      this.props.setTrackList(data.tracks.items);
-      var temp = [];
-      for (var i = 0 ; i < data.tracks.items.length; i++) {
-          temp.push(
-              <li key={i} className="list-group-item">
-                  {i + 1}) {data.tracks.items[i].name}
-              </li>
-          );
-      }
-      this.props.setTracklistArray(temp);
-      this.props.setAlbumName(data.name);
-      this.props.setType(data.genres);
-      this.props.setAlbumArtURL(data.images[0].url);
-      this.props.setActiveSong(data.tracks.items[0].name);
-      var albumLen = getAlbumLength(data.tracks.items);
-      this.props.setEndTime(albumLen[1]);
-    })
-    */
-  }
 
   search(event) {
     s.searchAlbums(event.target.value).then((data) => {
@@ -87,7 +61,7 @@ class Header extends Component {
                 <p className="input-group-addon" id="basic-addon1">LinrNotes</p>
                 <input type="text" className="form-control" placeholder="Search for..." onChange={this.search.bind(this)}/>
                 <span className="input-group-btn">
-                  <button className="btn btn-default" type="button">Go!</button>
+                  <button className="btn btn-default" type="button" onClick={console.log('hello earthlings')}>Go!</button>
                 </span>
                   <p className="input-group-addon" type="text" id="basic-addon2">{this.props.albumName}</p>
                   <p className="input-group-addon" type="text" id="basic-addon1">{this.props.currentTime} / {this.props.endTime}</p>
