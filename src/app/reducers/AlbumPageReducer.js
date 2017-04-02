@@ -1,7 +1,7 @@
 const albumPageReducer = (state = {
     artist: "nullArtist",
     albumName: "nullAlbumName",
-    albumId: "5JppODax1KTo8AB7jhtCzk",
+    albumId: "",
     genre: "nullGenre",
     type: "nullType",
     albumArtURL: "nullAlbumArtURL",

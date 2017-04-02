@@ -12,6 +12,7 @@ import store from '../store';
 import { Provider }  from 'react-redux';
 import { getAlbumLength } from '../actions/methods';
 import { createBrowserHistory } from "history";
+import SearchItem from "./SearchItem";
 const history = createBrowserHistory;
 
 //xs = < 760 s <= 990
@@ -29,10 +30,31 @@ class Header extends Component {
       albums: []
     }
   }
-
-  updateInfo(data) {
-    this.props.setAlbumId(data.albums.items[0].id);
-    this.props.setAlbumName(data.albums.items[0].name);
+  updateInfo(data, i) {
+   //this.props.setAlbumId(data.albums.items[0].id);
+    //this.props.setAlbumName(data.albums.items[0].name);
+    console.log(i);
+    /*
+    s.getAlbum(data.albums.items[0].id).then((data) => {
+      this.props.setData(data);
+      this.props.setTrackList(data.tracks.items);
+      var temp = [];
+      for (var i = 0 ; i < data.tracks.items.length; i++) {
+          temp.push(
+              <li key={i} className="list-group-item">
+                  {i + 1}) {data.tracks.items[i].name}
+              </li>
+          );
+      }
+      this.props.setTracklistArray(temp);
+      this.props.setAlbumName(data.name);
+      this.props.setType(data.genres);
+      this.props.setAlbumArtURL(data.images[0].url);
+      this.props.setActiveSong(data.tracks.items[0].name);
+      var albumLen = getAlbumLength(data.tracks.items);
+      this.props.setEndTime(albumLen[1]);
+    })
+    */
   }
 
   search(event) {
@@ -44,19 +66,7 @@ class Header extends Component {
        for (var i = 0 ; i < data.albums.items.length; i++) {
             var id = data.albums.items[i].id; 
             temp.push(
-                  <div key={id} value={id} className="row">
-                    <Link to={`./:id${id}`} onClick={() => this.updateInfo(data)}>
-                      <hr />
-                          <img alt="" src={data.albums.items[i].images[0].url}
-                           className="albumArt col-xs-1 col-sm-6 col-md-6 col-lg-6"/>
-      
-                      <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                          <p className="info">{data.albums.items[i].name}</p>
-                          <p className="info">{data.albums.items[i].external_urls.spotify}</p>
-                           <p className="info">{data.albums.items[i].artists[0].name}</p>
-                      </div>
-                     </Link>
-                    </div>
+                <SearchItem key={i} data={data} i={i} />
             )
             
        }
