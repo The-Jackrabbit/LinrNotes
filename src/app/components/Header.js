@@ -30,10 +30,10 @@ class Header extends Component {
       albums: []
     }
   }
-  updateInfo(data, i) {
-   //this.props.setAlbumId(data.albums.items[0].id);
-    //this.props.setAlbumName(data.albums.items[0].name);
-    console.log(i);
+  updateInfo(data) {
+   this.props.setAlbumId(data.albums.items[this.props.albumIndex].id);
+   this.props.setAlbumName(data.albums.items[this.props.albumIndex].name);
+    console.log(this.props.albumIndex);
     /*
     s.getAlbum(data.albums.items[0].id).then((data) => {
       this.props.setData(data);
@@ -108,6 +108,7 @@ const mapStateToProps = (state) => {
   return {
     artist: state.artist,
     albumName: state.albumName,
+    albumIndex: state.albumIndex,
     albumId: state.albumId,
     genre: state.genre,
     type: state.type,

@@ -4,7 +4,9 @@ const albumPageReducer = (state = {
     albumId: "",
     genre: "nullGenre",
     type: "nullType",
+    albumIndex: 0,
     albumArtURL: "nullAlbumArtURL",
+    albumList: [],
     activeSong: "nullActiveSong",
     currentTime: "00:00:00",
     endTime: "00:00:00",
@@ -22,6 +24,18 @@ const albumPageReducer = (state = {
         state = {
             ...state,
             albumName: action.payload,
+        }
+    }
+    else if (action.type === 'SETALBUMINDEX') {
+        state = {
+            ...state,
+            albumIndex: action.payload,
+        }
+    }
+    else if (action.type === 'SETALBUMLIST') {
+        state = {
+            ...state,
+            albumList: action.payload,
         }
     }
     else if (action.type === 'SETALBUMID') {
