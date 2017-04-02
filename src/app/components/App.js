@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link, withRouter} from 'react-router-dom';
 import Q from 'q';
 import '../styles/App.css';
+import { Button } from 'react-bootstrap';
 import SpotifyWebApi from 'spotify-web-api-js';
 import Timer from './timer';
 import ListItem from './ListItem';
