@@ -25,14 +25,17 @@ class SearchItem extends Component {
             this.props.setData(data);
             this.props.setTrackList(data.tracks.items);
             var temp = [];
+            var tempId = [];
             for (var i = 0 ; i < data.tracks.items.length; i++) {
                 temp.push(
                     <li key={i} className="list-group-item">
                         {i + 1}) {data.tracks.items[i].name}
                     </li>
                 );
+                tempId.push(data.tracks.items[i].id);
             }
             this.props.setTracklistArray(temp);
+            this.props.setTracklistIds(tempId);
             this.props.setAlbumName(data.name);
             this.props.setType(data.genres);
             this.props.setAlbumArtURL(data.images[0].url);
@@ -46,18 +49,19 @@ class SearchItem extends Component {
                      
     render() {
         return (
+          
+          <Link to={`/album/${this.props.data.albums.items[this.props.i].id}`} onClick={() => this.updateInfo()}>
             <div key={this.props.i} value={this.props.i} className="row">
-                <Link to={`/album/${this.props.data.albums.items[this.props.i].id}`} onClick={() => this.updateInfo()}>
                     <hr />
                     <img alt="" src={this.props.data.albums.items[this.props.i].images[0].url}
-                        className="albumArt col-xs-1 col-sm-6 col-md-6 col-lg-6"/>
-                    <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                        <p className="info">{this.props.data.albums.items[this.props.i].name}</p>
-                        <p className="info">{this.props.data.albums.items[this.props.i].external_urls.spotify}</p>
-                        <p className="info">{this.props.data.albums.items[this.props.i].artists[0].name}</p>
+                        className="col-xs-3 col-sm-3 col-md-3 col-lg-3"/>
+                    <div className="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                        <h1 className="info">{this.props.data.albums.items[this.props.i].name}</h1>
+                        <h3 className="info">{this.props.data.albums.items[this.props.i].artists[0].name}</h3>
                     </div>
-                </Link>
-            </div>     
+                
+            </div> 
+            </Link>    
         );
     }
 }
@@ -70,8 +74,8 @@ SearchItem.propTypes = {
 const mapStateToProps = (state) => {
   return {
     albumIndex: state.albumIndex,
-    albumId: state.albumId
-
+    albumId: state.albumId,
+    tracklistIds: state.tracklistIds
   }
 }
 
@@ -136,6 +140,12 @@ const mapDispatchToProps = (dispatch) => {
       dispatch({
         type: "SETTRACKLISTARRAY",
         payload: tracklistArray
+      })
+    },
+    setTracklistIds: (ids) => {
+      dispatch({
+        type: "SETTRACKLISTIDS",
+        payload: ids
       })
     },
     setData: (data) => {

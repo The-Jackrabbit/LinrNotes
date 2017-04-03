@@ -49,7 +49,7 @@ class Header extends React.Component {
           <div className="row">
             <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
               <div className="input-group">
-                <p className="input-group-addon" id="basic-addon1">LinrNotes</p>
+                <h1 className="input-group-addon" id="basic-addon1"><Link to="/">LinrNotes</Link></h1>
                 <input type="text" className="form-control" placeholder="Search for..." onChange={this.search.bind(this)}/>
                 <span className="input-group-btn">
                   <Link to="/"><button className="btn btn-default" type="button" onClick={console.log('hello earthlings')}>Go!</button></Link>

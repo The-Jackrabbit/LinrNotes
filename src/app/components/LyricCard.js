@@ -26,6 +26,7 @@ class LyricCard extends React.Component {
 const mapStateToProps = (state) => {
   return {
     lyrics: 'lala',
+    ids: state.tracklistIds,
     activeSong: state.activeSong,
   }
 }
