@@ -1,28 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../styles/AlbumPage.css';
-import { Route, BrowserRouter as Router, Match, Miss} from "react-router";
 import { nav } from 'react-bootstrap';
-import Timer from './timer'
-//import request from 'request';
-import { connect } from 'react-redux';//dispatch
-import { withRouter, Link } from "react-router-dom";
-import App from "./App";
-import AlbumPage from './AlbumPage';
-import store from '../store';
-import { Provider }  from 'react-redux';
-import { getAlbumLength } from '../actions/methods';
-import { createBrowserHistory } from "history";
+import { connect } from 'react-redux';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  withRouter
+} from 'react-router-dom';
 import SearchItem from "./SearchItem";
-const history = createBrowserHistory;
-
-//xs = < 760 s <= 990
+import AlbumPage from "./AlbumPage";
 import Q from 'q';
 import SpotifyWebApi from 'spotify-web-api-js';
+import AlbumList from "./AlbumList";
 
 var s = new SpotifyWebApi();
 s.setPromiseImplementation(Q);
 
-class Header extends Component {
+class Header extends React.Component {
   constructor(props) {
     super(props);
 
@@ -33,26 +28,22 @@ class Header extends Component {
 
   search(event) {
     s.searchAlbums(event.target.value).then((data) => {
-       this.setState({
-         albums: []
-       })
        var temp = [];
        for (var i = 0 ; i < data.albums.items.length; i++) {
             var id = data.albums.items[i].id; 
             temp.push(
-                <SearchItem key={i} data={data} i={i} />
+              <SearchItem key={i} data={data} i={i} />
             )
             
        }
-       this.setState({
-          albums: temp
-        })
+       this.props.setAlbumList(temp);
     })
   }
 
 
   render() {
     return (
+      <Router>
         <div className="headerPadding">
         <nav className="btn-toolbar navbar-fixed-top">
           <div className="row">
@@ -61,9 +52,9 @@ class Header extends Component {
                 <p className="input-group-addon" id="basic-addon1">LinrNotes</p>
                 <input type="text" className="form-control" placeholder="Search for..." onChange={this.search.bind(this)}/>
                 <span className="input-group-btn">
-                  <button className="btn btn-default" type="button" onClick={console.log('hello earthlings')}>Go!</button>
+                  <Link to="/"><button className="btn btn-default" type="button" onClick={console.log('hello earthlings')}>Go!</button></Link>
                 </span>
-                  <p className="input-group-addon" type="text" id="basic-addon2">{this.props.albumName}</p>
+                  <p className="input-group-addon" type="text" id="basic-addon2"><Link to="/album/">{this.props.albumName}</Link></p>
                   <p className="input-group-addon" type="text" id="basic-addon1">{this.props.currentTime} / {this.props.endTime}</p>
                 
               </div>
@@ -71,9 +62,13 @@ class Header extends Component {
           </div>
         </nav>
 
-        {this.state.albums}
 
+        <Route exact path="/" component={AlbumList} />
+        <Route path="/album/" component={AlbumPage} />
+        
+        
         </div>
+        </Router>
     );
   }
 }
@@ -83,6 +78,7 @@ const mapStateToProps = (state) => {
     artist: state.artist,
     albumName: state.albumName,
     albumIndex: state.albumIndex,
+    albumList: state.albumList,
     albumId: state.albumId,
     genre: state.genre,
     type: state.type,
@@ -135,6 +131,12 @@ const mapDispatchToProps = (dispatch) => {
         payload: URL
       })
     },
+    setAlbumList: (list) => {
+      dispatch({
+        type: 'SETALBUMLIST',
+        payload: list
+      })
+    },
     setActiveSong: (song) => {
       dispatch({
         type: 'SETACTIVESONG',
@@ -168,4 +170,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

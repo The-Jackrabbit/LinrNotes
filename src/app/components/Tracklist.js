@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../styles/AlbumPage.css';
 //import { Button, Navbar, Glyphicon, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { connect } from 'react-redux';//dispatch
 
-class Tracklist extends Component {
+class Tracklist extends React.Component {
   
   render() {
     return (

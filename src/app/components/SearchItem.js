@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import '../styles/AlbumPage.css';
 import { connect } from 'react-redux';
-import { withRouter, Link } from "react-router-dom";
 import { getAlbumLength } from '../actions/methods';
+
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  withRouter
+} from 'react-router-dom';
 import Q from 'q';
 import SpotifyWebApi from 'spotify-web-api-js';
 
@@ -36,11 +42,12 @@ class SearchItem extends Component {
         })
     }
 
-
+// <img alt="" src={this.props.data.albums.items[this.props.i].images[0].url}
+                     
     render() {
         return (
             <div key={this.props.i} value={this.props.i} className="row">
-                <Link to={`/${'album/' + this.props.data.albums.items[this.props.i].id}`} onClick={() => this.updateInfo()}>
+                <Link to={`/album/${this.props.data.albums.items[this.props.i].id}`} onClick={() => this.updateInfo()}>
                     <hr />
                     <img alt="" src={this.props.data.albums.items[this.props.i].images[0].url}
                         className="albumArt col-xs-1 col-sm-6 col-md-6 col-lg-6"/>
@@ -140,4 +147,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SearchItem));
+export default connect(mapStateToProps, mapDispatchToProps)(SearchItem);
