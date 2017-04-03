@@ -11,7 +11,7 @@ var s = new SpotifyWebApi();
 s.setPromiseImplementation(Q);
 
 class SearchItem extends Component {
-  
+
    updateInfo() {
     this.props.setAlbumIndex(this.props.i);
     this.props.setAlbumId(this.props.data.albums.items[this.props.i].id);
@@ -46,7 +46,7 @@ class SearchItem extends Component {
             <Link to={`/${'album/' + this.props.data.albums.items[this.props.i].id}`} onClick={() => this.updateInfo()}>
                 <hr />
                 <img alt="" src={this.props.data.albums.items[this.props.i].images[0].url}
-                    className="albumArt col-xs-1 col-sm-6 col-md-6 col-lg-6"/>
+                    className="albumArt col-xs-3 col-sm-3 col-md-3 col-lg-3"/>
                 <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                     <p className="info">{this.props.data.albums.items[this.props.i].name}</p>
                     <p className="info">{this.props.data.albums.items[this.props.i].external_urls.spotify}</p>
