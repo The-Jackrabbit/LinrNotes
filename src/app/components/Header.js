@@ -2,17 +2,6 @@ import React from 'react';
 import '../styles/AlbumPage.css';
 import { nav } from 'react-bootstrap';
 import { connect } from 'react-redux';
-<<<<<<< HEAD
-import { withRouter } from "react-router-dom";
-import SearchItem from "./SearchItem";
-import AlbumList from './AlbumList';
-import Q from 'q';
-import SpotifyWebApi from 'spotify-web-api-js';
-var s = new SpotifyWebApi();
-s.setPromiseImplementation(Q);
-
-class Header extends Component {
-=======
 import {
   BrowserRouter as Router,
   Route,
@@ -36,21 +25,13 @@ class Header extends React.Component {
       albums: []
     }
   }
->>>>>>> origin/master
-
   search(event) {
     s.searchAlbums(event.target.value).then((data) => {
        var temp = [];
        for (var i = 0 ; i < data.albums.items.length; i++) {
             temp.push(
-<<<<<<< HEAD
                 <SearchItem key={i} data={data} i={i} />
-            )  
-=======
-              <SearchItem key={i} data={data} i={i} />
             )
-            
->>>>>>> origin/master
        }
        this.props.setAlbumList(temp);
     })
@@ -77,16 +58,8 @@ class Header extends React.Component {
             </div>
           </div>
         </nav>
-
-<<<<<<< HEAD
-        <AlbumList />
-=======
->>>>>>> origin/master
-
         <Route exact path="/" component={AlbumList} />
-        <Route path="/album/" component={AlbumPage} />
-        
-        
+        <Route path="/album/" component={AlbumPage} />  
         </div>
         </Router>
     );
@@ -96,8 +69,6 @@ class Header extends React.Component {
 const mapStateToProps = (state) => {
   return {
     albumName: state.albumName,
-<<<<<<< HEAD
-=======
     albumIndex: state.albumIndex,
     albumList: state.albumList,
     albumId: state.albumId,
@@ -105,7 +76,6 @@ const mapStateToProps = (state) => {
     type: state.type,
     albumArtURL: state.albumArtURL,
     activeSong: state.activeSong,
->>>>>>> origin/master
     currentTime: state.currentTime,
     endTime: state.endTime,
   }
@@ -119,8 +89,6 @@ const mapDispatchToProps = (dispatch) => {
         payload: list
       })
     },
-<<<<<<< HEAD
-=======
     setAlbumArtURL: (URL) => {
       dispatch({
         type: 'SETALBUMARTURL',
@@ -163,7 +131,6 @@ const mapDispatchToProps = (dispatch) => {
         payload: data
       })
     }
->>>>>>> origin/master
   }
 }
 

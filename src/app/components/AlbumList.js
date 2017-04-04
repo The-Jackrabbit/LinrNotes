@@ -1,18 +1,3 @@
-<<<<<<< HEAD
-import React, { Component } from 'react';
-import '../styles/AlbumPage.css';
-import { connect } from 'react-redux';//dispatch
-import { withRouter } from "react-router-dom";
-
-class AlbumList extends Component {
-  render() {
-    return (
-        <div className="headerPadding">
-            {this.props.albumList}
-        </div>
-    );
-  }
-=======
 import React from 'react';
 import '../styles/AlbumPage.css';
 import { connect } from 'react-redux';
@@ -31,16 +16,11 @@ class AlbumList extends React.Component {
             </div> 
         );
     }
->>>>>>> origin/master
 }
 
 const mapStateToProps = (state) => {
   return {
-<<<<<<< HEAD
     albumList: state.albumList,
-=======
-    albumList: state.albumList
->>>>>>> origin/master
   }
 }
 
