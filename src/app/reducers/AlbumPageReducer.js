@@ -12,6 +12,7 @@ const albumPageReducer = (state = {
     endTime: "00:00:00",
     tracklist: "",
     tracklistArray: [],
+    tracklistIds: [],
     data: {}
 }, action) => {
     if (action.type === 'SETARTIST') {
@@ -90,6 +91,12 @@ const albumPageReducer = (state = {
         state = {
             ...state,
             tracklistArray: action.payload,
+        }
+    }
+    else if (action.type === 'SETTRACKLISTIDS') {
+        state = {
+            ...state,
+            tracklistIds: action.payload,
         }
     }
     else if (action.type === 'SETDATA') {

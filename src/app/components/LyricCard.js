@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { nav } from 'react-bootstrap';
 import { connect } from 'react-redux';//dispatch
 import '../styles/LyricCard.css';
 
-class LyricCard extends Component {
+class LyricCard extends React.Component {
   
   render() {
     return (
@@ -26,6 +26,7 @@ class LyricCard extends Component {
 const mapStateToProps = (state) => {
   return {
     lyrics: 'lala',
+    ids: state.tracklistIds,
     activeSong: state.activeSong,
   }
 }

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Q from 'q';
 import '../styles/AlbumPage.css';
 import { withRouter} from 'react-router-dom';
@@ -44,7 +44,7 @@ console.log(response.json());
 var s = new SpotifyWebApi();
 s.setPromiseImplementation(Q);
 
-class AlbumPage extends Component {
+class AlbumPage extends React.Component {
 
   componentWillMount() {
     s.getAlbum(this.props.albumId).then((data) => {

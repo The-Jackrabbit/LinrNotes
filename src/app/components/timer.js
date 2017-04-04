@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../styles/timer.css';
 //import ReactDOM from 'react-dom';
 import { Link, withRouter} from 'react-router-dom';
 import { connect,  } from 'react-redux';
 
-class Timer extends Component {
+class Timer extends React.Component {
   constructor (props) {
     super(props)
     this.state = {

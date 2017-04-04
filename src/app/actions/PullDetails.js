@@ -2,7 +2,7 @@ import Q from 'q';
 import SpotifyWebApi from 'spotify-web-api-js';
 import { connect,  } from 'react-redux';//dispatch
 import { withRouter} from 'react-router-dom';
-import React, { Component } from 'react';
+import ReactS from 'react';
 var s = new SpotifyWebApi();
 s.setPromiseImplementation(Q);
 

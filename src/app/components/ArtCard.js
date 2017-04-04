@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';//dispatch
 import '../styles/ArtCard.css';
 
-class ArtCard extends Component {
+class ArtCard extends React.Component {
   
   render() {
     return (

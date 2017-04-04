@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link, withRouter} from 'react-router-dom';
 import Q from 'q';
 import '../styles/App.css';
@@ -13,7 +13,7 @@ import { connect } from 'react-redux';//dispatch
 var s = new SpotifyWebApi();
 s.setPromiseImplementation(Q);
 
-class App extends Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
 
