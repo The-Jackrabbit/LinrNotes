@@ -6,8 +6,9 @@ class ArtCard extends React.Component {
   
   render() {
     return (
-        <div className="artCard">
-        <img src={this.props.albumArtURL} alt="" className="albumArt"/>
+        <div className="panel panel-default artCard">
+          <img src={this.props.albumArtURL} alt="" className="albumArt"/>
+          <h4 className="albumName">{this.props.albumName}</h4>
         </div>
     );
   }
@@ -16,7 +17,8 @@ class ArtCard extends React.Component {
 const mapStateToProps = (state) => {
   return {
     data: state.data,
-    albumArtURL: state.albumArtURL
+    albumArtURL: state.albumArtURL,
+    albumName: state.albumName
   }
 }
 

@@ -101,21 +101,21 @@ class AlbumPage extends React.Component {
     return (
       <div>
         <div className="headerPadding">
-        <Grid>
-          <Row className="show-grid">
-            <Col sm={3} md={4} lg={4}>          
+          <div className="row">
+            <div className="col-xs-3 col-sm-3 col-md-4 col-lg-4">          
               <ArtCard />
               <Tracklist />
-            </Col>
-            <Col sm={3} md={4} lg={4}>
+            </div>
+            <div className="col-xs-3 col-sm-3 col-md-4 col-lg-4">
               <LyricCard />
-              </Col>
-            <Col sm={3} md={4} lg={4}>
+              </div>
+            <div className="col-xs-3 col-sm-3 col-md-4 col-lg-4">
               <LyricCard />
-             </Col>
-          </Row>
-        </Grid>
+             </div>
+          </div>
+          
         </div>
+        
       </div>
     );
   }

@@ -33,12 +33,13 @@
 }
 
 .headerPadding {
-    padding: 50pt;
+    padding-top: 25pt;
+    padding-left: 10pt;
+    padding-right: 10pt;
 }
 
 .tracklistCard {
     height: 200pt;
-    width: 200pt;
     overflow-y: scroll;
 }
 
