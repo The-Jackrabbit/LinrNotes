@@ -29,7 +29,8 @@
     "redux-thunk": "^2.2.0",
     "request": "^2.81.0",
     "routes": "^2.1.0",
-    "spotify-web-api-js": "^0.21.2"
+    "spotify-web-api-js": "^0.21.2",
+    "superagent": "^3.5.2"
   },
   "devDependencies": {
     "react-scripts": "0.9.5"

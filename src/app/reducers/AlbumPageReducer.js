@@ -11,6 +11,7 @@ const albumPageReducer = (state = {
     currentTime: "00:00:00",
     endTime: "00:00:00",
     tracklist: "",
+    activeLyrics: "Drop out of life with bong in hand",
     tracklistArray: [],
     tracklistIds: [],
     data: {}
@@ -67,6 +68,11 @@ const albumPageReducer = (state = {
         state = {
             ...state,
             activeSong: action.payload,
+        }
+    }else if (action.type === 'SETACTIVELYRICS') {
+        state = {
+            ...state,
+            activeLyrics: action.payload,
         }
     }
     else if (action.type === 'SETCURRENTTIME') {

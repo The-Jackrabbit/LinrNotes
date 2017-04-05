@@ -102,14 +102,14 @@ class AlbumPage extends React.Component {
       <div>
         <div className="headerPadding">
           <div className="row">
-            <div className="col-xs-3 col-sm-3 col-md-4 col-lg-4">          
+            <div className="col-xs-6 col-sm-3 col-md-4 col-lg-4">          
               <ArtCard />
               <Tracklist />
             </div>
-            <div className="col-xs-3 col-sm-3 col-md-4 col-lg-4">
+            <div className="col-xs-6 col-sm-3 col-md-4 col-lg-4">
               <LyricCard />
               </div>
-            <div className="col-xs-3 col-sm-3 col-md-4 col-lg-4">
+            <div className="col-xs-6 col-sm-3 col-md-4 col-lg-4">
               <LyricCard />
              </div>
           </div>

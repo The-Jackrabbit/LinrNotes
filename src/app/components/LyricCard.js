@@ -2,9 +2,11 @@ import React from 'react';
 import { nav } from 'react-bootstrap';
 import { connect } from 'react-redux';//dispatch
 import '../styles/LyricCard.css';
+import Request from "superagent";
+import axios from "axios";
 
 class LyricCard extends React.Component {
-  
+
   render() {
     return (
       <div>
@@ -25,7 +27,7 @@ class LyricCard extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    lyrics: 'lala',
+    lyrics: state.activeLyrics,
     ids: state.tracklistIds,
     activeSong: state.activeSong,
   }
@@ -34,10 +36,16 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     //methods go here
-    setName: (name) => {
+    setActiveSong: (song) => {
       dispatch({
-        type: "SETNAME",
-        payload: name,
+        type: "SETACTIVESONG",
+        payload: song,
+      })
+    },
+    setActiveLyrics: (lyrics) => {
+      dispatch({
+        type: "SETACTIVELYRICS",
+        payload: lyrics,
       })
     }
   }
