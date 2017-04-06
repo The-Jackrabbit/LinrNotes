@@ -45,13 +45,12 @@ class Header extends React.Component {
         <nav className="btn-toolbar navbar-fixed-top">
           <div className="row">
             <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <div className="input-group">
-                <h1 className="input-group-addon" id="basic-addon1"><Link to="/">LinrNotes</Link></h1>
+              <div className="input-group input-group-lg">
+                <Link className="input-group-addon" id="basic-addon1" to="/">LinrNotes</Link>
                 <input type="text" className="form-control" placeholder="Search for..." onChange={this.search.bind(this)}/>
-                <span className="input-group-btn">
-                  <Link to="/"><button className="btn btn-default" type="button">Go!</button></Link>
-                </span>
-                  <p className="input-group-addon" type="text" id="basic-addon2"><Link to="/album/">{this.props.albumName}</Link></p>
+                  <Link className="input-group-btn" to="/">
+                      <button className="btn btn-default" type="button">Go!</button>
+                  </Link>
                   <p className="input-group-addon" type="text" id="basic-addon1">{this.props.currentTime} / {this.props.endTime}</p>
                 
               </div>

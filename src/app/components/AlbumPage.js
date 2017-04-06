@@ -10,37 +10,7 @@ import { connect,  } from 'react-redux';//dispatch
 import Tracklist from './Tracklist';
 import ArtCard from './ArtCard';
 import LyricCard from './LyricCard';
-/*
-var client_id = '9d2b0b01004541db9ea037efe0ce76d9'; // Your client id
-var client_secret = '331cfe3690b64033b376843ce22d6893'; // Your secret
-var redirect_uri = 'http://localhost:3000/'; // Your redirect uri
-
-
-
-var base_url= "http://api.genius.com";
-var search_url= base_url + "/search";
-var song_title= "Billabong Valley";
-var gdata = {
-   'q' : song_title 
-  };
-var gclinet_id='oyKIbNoXmQDYl-CQO_zDA1c5jO0s1xEnI_y-cOrEUjFCm5PEpJ1bEd7JX6onhegc';
-var gclient_secret='Y8Wxh8YWP3PeJLis9YWsQzch--0cg5NkSSkuf1rHv9JvQxzqRPMcIGEYZksxgscXn-qktaJXqopy8OJ1CQFwIg';
-var gclient_access_token= 'Qh26ose9NiyhZjo92Rx2QUi5h7TtUyIVilGPDs9Ant0rT79kKyS2ZM4xjM0s6v23';
-
-var headers = {'Authorization': gclient_secret};
-var url = 'https://api.genius.com/oauth/authorize?';
-var response = request.url({
-  url,
-  data : {
-    client_id: gclinet_id,
-
-  }
-
-});
-
-console.log(response.json());
-*/
-
+import Track from "./Track";
 var s = new SpotifyWebApi();
 s.setPromiseImplementation(Q);
 
@@ -53,8 +23,8 @@ class AlbumPage extends React.Component {
       var temp = [];
       for (var i = 0 ; i < this.props.tracklist.length; i++) {
           temp.push(
-              <li key={i} className="list-group-item">
-                  {i + 1}) {this.props.tracklist[i].name}
+              <li key={i} >
+                  <Track i={i} />
               </li>
           );
       }      
@@ -102,14 +72,14 @@ class AlbumPage extends React.Component {
       <div>
         <div className="headerPadding">
           <div className="row">
-            <div className="col-xs-6 col-sm-3 col-md-4 col-lg-4">          
+            <div className="col-xs-12 col-sm-6 col-md-4 col-lg-4">          
               <ArtCard />
               <Tracklist />
             </div>
-            <div className="col-xs-6 col-sm-3 col-md-4 col-lg-4">
+            <div className="col-xs-12 col-sm-6 col-md-4 col-lg-4">
               <LyricCard />
               </div>
-            <div className="col-xs-6 col-sm-3 col-md-4 col-lg-4">
+            <div className="col-xs-12 col-sm-6 col-md-4 col-lg-4">
               <LyricCard />
              </div>
           </div>
