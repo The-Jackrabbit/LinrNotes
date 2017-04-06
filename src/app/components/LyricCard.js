@@ -6,7 +6,7 @@ import Request from "superagent";
 import axios from "axios";
 
 class LyricCard extends React.Component {
-
+  
   render() {
     return (
       <div>

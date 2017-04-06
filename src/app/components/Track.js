@@ -13,11 +13,13 @@ class Track extends React.Component {
 
     render() {
         return (
-            <a href={`#${this.props.tracklist[this.state.index].id}`} className="list-group-item"
-            onClick={() => this.props.setActiveSong(this.props.tracklist[this.state.index].name)}
-            >
-                {this.state.index + 1}) {this.props.tracklist[this.state.index].name}
-            </a>
+            <div>
+                <a href={`#${this.props.tracklist[this.state.index].id}`} className="list-group-item"
+                onClick={() => this.props.setActiveSong(this.props.tracklist[this.state.index].name)}
+                >
+                    {this.state.index + 1}) {this.props.tracklist[this.state.index].name}
+                </a>
+            </div>
         );
     }
 }
