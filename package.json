@@ -48,7 +48,7 @@
   },
   "scripts": {
     "start": "npm run build",
-    "build": "webpack -d && xcopy \"public/index.html\" \"dist/\" /F /Y && node server.js --content-base dist/ --inline",
+    "build": "webpack -d && xcopy \"public/index.html\" \"dist/\" /F /Y && webpack-dev-server --content-base dist/ --inline",
     "build:prod": "webpack -d && xcopy \"public/index.html\" \"dist/\" /F /Y",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"

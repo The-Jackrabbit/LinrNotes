@@ -11,7 +11,7 @@ const albumPageReducer = (state = {
     currentTime: "00:00:00",
     endTime: "00:00:00",
     tracklist: "",
-    activeLyrics: "THis is where I'd put lyrics... if I had any",
+    activeLyrics: "This is where I'd put lyrics... if I had any",
     tracklistArray: [],
     tracklistIds: [],
     data: {}

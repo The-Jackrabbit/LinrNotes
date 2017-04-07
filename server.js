@@ -1,17 +1,9 @@
-const path = require('path')
-const express = require('express')
+const express = require("express");
+const path = require("path");
 
-const app = express()
-const port = (process.env.PORT || 8080)
-const indexPath = path.join(__dirname, 'public/index.html')
-const distPath = express.static(path.join(__dirname, 'dist'))
-const publicPath = express.static(path.join(__dirname, 'src'))
+var app = express();
 
-app.use('/dist', distPath)
-app.use('/src', publicPath)
-
-app.listen(process.env.PORT || 8080)
-/*"start": "npm run build",
-    "build": "webpack -d && xcopy \"public/index.html\" \"dist/\" /F /Y && webpack-dev-server --content-base public/ --inline",
-    "build:prod": "webpack -d && xcopy \"public/index.html\" \"dist/\" /F /Y",
-    */
+app.use(express.static(path.join(__dirname, "./dist/")));
+app.listen(7777, function() {
+    console.log("server started");
+})
