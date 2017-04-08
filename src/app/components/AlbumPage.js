@@ -6,13 +6,17 @@ import { Grid, Col, Row } from 'react-bootstrap';
 import SpotifyWebApi from 'spotify-web-api-js';
 //import request from 'request';
 import { connect,  } from 'react-redux';//dispatch
-
+import axios from 'axios';
 import Tracklist from './Tracklist';
 import ArtCard from './ArtCard';
 import LyricCard from './LyricCard';
 import Track from "./Track";
 var s = new SpotifyWebApi();
 s.setPromiseImplementation(Q);
+
+const config = {
+  headers: {'Access-Control-Allow-Origin':true}
+}
 
 class AlbumPage extends React.Component {
 

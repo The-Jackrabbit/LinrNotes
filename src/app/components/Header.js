@@ -26,6 +26,7 @@ class Header extends React.Component {
     }
   }
   search(event) {
+    
     s.searchAlbums(event.target.value).then((data) => {
        var temp = [];
        for (var i = 0 ; i < data.albums.items.length; i++) {
